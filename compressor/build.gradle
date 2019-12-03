@@ -7,7 +7,7 @@ buildscript {
         mavenCentral()
         jcenter()
     }
-    ext.kotlin_version = '1.0.6'
+    ext.kotlin_version = '1.2.51'
     dependencies {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
