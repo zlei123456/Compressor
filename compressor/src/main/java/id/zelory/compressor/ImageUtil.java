@@ -54,6 +54,11 @@ class ImageUtil {
 
         int actualHeight = options.outHeight;
         int actualWidth = options.outWidth;
+        int orientation1 = getImageOrientation(imageFile.getAbsolutePath());
+        if (orientation1 == ExifInterface.ORIENTATION_ROTATE_90) {
+            actualHeight = options.outWidth;
+            actualWidth = options.outHeight;
+        }
 
         float imgRatio = (float) actualWidth / (float) actualHeight;
         float maxRatio = reqWidth / reqHeight;
@@ -151,5 +156,27 @@ class ImageUtil {
         }
 
         return inSampleSize;
+    }
+
+    public static int getImageOrientation(String imageLocalPath)
+    {
+        try
+        {
+            ExifInterface exifInterface = new ExifInterface(imageLocalPath);
+            int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_90 || orientation == ExifInterface.ORIENTATION_ROTATE_270) {
+                return ExifInterface.ORIENTATION_ROTATE_90;
+            } else {
+                return ExifInterface.ORIENTATION_NORMAL;
+            }
+
+//            return orientation;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return ExifInterface.ORIENTATION_NORMAL;
+        }
+
     }
 }
