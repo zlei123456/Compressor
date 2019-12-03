@@ -1,4 +1,7 @@
 Compressor
+
+此分支修改了图片实际尺寸问题。
+
 ======
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Compressor-blue.svg?style=flat)](http://android-arsenal.com/details/1/3758)
 <p align="center"><img src="https://raw.githubusercontent.com/zetbaitsu/Compressor/master/ss.png" width="50%" /></p>
