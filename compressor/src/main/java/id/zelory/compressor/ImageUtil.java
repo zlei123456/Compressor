@@ -89,6 +89,12 @@ class ImageUtil {
         options.inInputShareable = true;
         options.inTempStorage = new byte[16 * 1024];
 
+        if (orientation1 == ExifInterface.ORIENTATION_ROTATE_90) {
+            int tmp = actualHeight;
+            actualHeight = actualWidth;
+            actualWidth = tmp;
+        }
+
         try {
             bmp = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
         } catch (OutOfMemoryError exception) {
